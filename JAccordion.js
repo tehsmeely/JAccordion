@@ -79,24 +79,20 @@ function JAccordion(items, titles, contentContainers, autoClose) {
     /*
      *  CLICK EVENT
      */
-    this.titles.click(function() {
-
+    // CLick event chooses between two functions based on autoClose setting
+    // Autoclose will enable accordion behaviour, if False it's simple toggles
+    //
+    var accordionClick = function(){
         var targetContent = $(this).siblings(".content-container")[0],
             targetAnimation = targetContent.toggleAnimation,
             $this = $(this),
             $thisIndex = self.titles.index($this);
-        console.log($this);
-        console.log(targetContent);
-        console.log(targetAnimation);
 
         if ($thisIndex !== self.activeItem && self.activeItem !== null) {
-            console.log("if");
-            if (self.autoClose) {
-                self.contentContainers[self.activeItem].toggleAnimation.reverse();
-            }
+            self.contentContainers[self.activeItem].toggleAnimation.reverse();
             // remove the active class
             $(".active-accordion").removeClass("active-accordion");
-
+            
             // add the active class to this element
             $this.addClass("active-accordion");
 
@@ -105,7 +101,6 @@ function JAccordion(items, titles, contentContainers, autoClose) {
             self.activeItem = $thisIndex;
 
         } else if (self.activeItem === null) {
-            console.log("elseif");
             // add the active class to this element
             $this.addClass("active-accordion");
 
@@ -114,7 +109,6 @@ function JAccordion(items, titles, contentContainers, autoClose) {
             self.activeItem = $thisIndex;
 
         } else {
-            console.log("else");
             // remove the active class
             $(".active-accordion").removeClass("active-accordion");
 
@@ -123,8 +117,28 @@ function JAccordion(items, titles, contentContainers, autoClose) {
             self.activeItem = null;
         }
 
-    });
-
+    }
+    var toggleClick = function(){
+        var targetContent = $(this).siblings(".content-container")[0],
+            targetAnimation = targetContent.toggleAnimation,
+            $this = $(this),
+        
+        if ($this.hasClass("active-accordion")){
+            targetAnimation.reverse();
+            $this.removeClass("active-accordion");
+        } else {
+            targetAnimation.play()
+            $this.addClass("active-accordion");
+        }
+    }
+    //Set the click handle here, and select function
+    if (self.autoClose) {
+        this.titles.click(accordionClick);
+    } else {
+        this.titles.click(toggleClick);
+    }
+    
+    
     console.log("init loop");
     $.each(this.contentContainers, function(i, e) {
         console.log(e)
@@ -132,3 +146,4 @@ function JAccordion(items, titles, contentContainers, autoClose) {
 
     });
 }
+// End import JAccordion
