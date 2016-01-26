@@ -3,8 +3,8 @@ function JAccordion(items, titles, contentContainers, autoClose) {
     var self = this;
     this.items = $(typeof items !== 'undefined' ? items : ".item");
     this.titles = $(typeof titles !== 'undefined' ? titles : ".title");
-    this.contentContainers =
-        $(typeof contentContainers !== 'undefined' ? contentContainers : ".content-container");
+    this.contentContainer_str = typeof contentContainers !== 'undefined' ? contentContainers : ".content-container";
+    this.contentContainers =  $(this.contentContainer_str);
     this.autoClose = typeof autoClose !== 'undefined' ? autoClose : true;
     this.activeItem = null;
     console.log(this.items);
@@ -83,7 +83,7 @@ function JAccordion(items, titles, contentContainers, autoClose) {
     // Autoclose will enable accordion behaviour, if False it's simple toggles
     //
     var accordionClick = function(){
-        var targetContent = $(this).siblings(self.contentContainers)[0],
+        var targetContent = $(this).siblings(self.contentContainer_str)[0],
             targetAnimation = targetContent.toggleAnimation,
             $this = $(this),
             $thisIndex = self.titles.index($this);
@@ -119,7 +119,7 @@ function JAccordion(items, titles, contentContainers, autoClose) {
 
     }
     var toggleClick = function(){
-        var targetContent = $(this).siblings(self.contentContainers)[0],
+        var targetContent = $(this).siblings(self.contentContainer_str)[0],
             targetAnimation = targetContent.toggleAnimation,
             $this = $(this);
         
