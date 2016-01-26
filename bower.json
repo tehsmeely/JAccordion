@@ -1,0 +1,21 @@
+{
+  "name": "JAccordion",
+  "main": "JAccordion.js",
+  "version": "0.0.2",
+  "homepage": "https://github.com/tehsmeely/JAccordion",
+  "authors": [
+    "Jonty Heiser <jon.heiser@gmail.com>"
+  ],
+  "description": "Distributable Accordion Class",
+  "moduleType": [
+    "globals"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
