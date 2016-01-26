@@ -83,7 +83,7 @@ function JAccordion(items, titles, contentContainers, autoClose) {
     // Autoclose will enable accordion behaviour, if False it's simple toggles
     //
     var accordionClick = function(){
-        var targetContent = $(this).siblings(".content-container")[0],
+        var targetContent = $(this).siblings(self.contentContainers)[0],
             targetAnimation = targetContent.toggleAnimation,
             $this = $(this),
             $thisIndex = self.titles.index($this);
@@ -119,7 +119,7 @@ function JAccordion(items, titles, contentContainers, autoClose) {
 
     }
     var toggleClick = function(){
-        var targetContent = $(this).siblings(".content-container")[0],
+        var targetContent = $(this).siblings(self.contentContainers)[0],
             targetAnimation = targetContent.toggleAnimation,
             $this = $(this);
         
