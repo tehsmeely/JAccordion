@@ -121,7 +121,7 @@ function JAccordion(items, titles, contentContainers, autoClose) {
     var toggleClick = function(){
         var targetContent = $(this).siblings(".content-container")[0],
             targetAnimation = targetContent.toggleAnimation,
-            $this = $(this),
+            $this = $(this);
         
         if ($this.hasClass("active-accordion")){
             targetAnimation.reverse();
